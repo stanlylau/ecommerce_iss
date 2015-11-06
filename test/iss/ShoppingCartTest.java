@@ -1,4 +1,9 @@
-import static org.junit.Assert.*;
+package iss;
+
+
+import static org.junit.Assert.*;import iss.Item;
+import iss.ShoppingCart;
+
 
 import org.junit.Ignore;
 import org.junit.Test;
