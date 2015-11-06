@@ -63,11 +63,11 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="MyStringStackTest">
+    <target name="ShoppingCartTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="test.MyStringStackTest" todir="${junit.output.dir}"/>
+            <test name="test.ShoppingCartTest" todir="${junit.output.dir}"/>
             <classpath refid="ecommerce_iss.classpath"/>
         </junit>
     </target>
@@ -84,7 +84,7 @@
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="test.AllTests" todir="${junit.output.dir}"/>
-            <test name="test.MyStringStackTest" todir="${junit.output.dir}"/>
+            <test name="test.ShoppingCartTest" todir="${junit.output.dir}"/>
             <classpath refid="ecommerce_iss.classpath"/>
         </junit>
     </target>
