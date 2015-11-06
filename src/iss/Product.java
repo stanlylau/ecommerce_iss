@@ -1,13 +1,13 @@
 package iss;
 
-public class Item {
+public class Product {
 
 	private String name;
 	private String sku;
 	private double price;
 	private String style;
 
-	public Item(String name, String sku, double price) {
+	public Product(String name, String sku, double price) {
 		this.name = name;
 		this.sku = sku;
 		this.style = sku.substring(0, 4);

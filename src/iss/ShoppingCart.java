@@ -6,20 +6,28 @@ import java.util.List;
 public class ShoppingCart {
 
 	private double totalPrice;
-	private String previousStyle = "";
+	private List<OrderItem> items = new ArrayList<OrderItem>();
 	
 	public double total() {	
+		for (OrderItem item : items) {
+			if( (item.getQuantity() % 2) ==0)
+			{
+				int i = item.getQuantity() / 2;
+								
+				totalPrice += item.getProduct().getPrice() * i * 1.7;
+			}else
+			{
+				int i = item.getQuantity() / 2;
+				totalPrice += item.getProduct().getPrice() * i * 1.7 + item.getProduct().getPrice();
+			}
+		}
+		
 		return totalPrice;
 	}
 
-	public void buy(Item item) {
-		if(previousStyle.equals(item.getStyle())) 
-			this.totalPrice += item.getPrice() * 0.7;
-		else if(previousStyle.equals("")) 
-			this.totalPrice += item.getPrice();
-		else
-			this.totalPrice += item.getPrice() * 0.5;
-
-		previousStyle = item.getStyle();
+	public void add(OrderItem item) {
+		items.add(item);
 	}
+
+
 }
