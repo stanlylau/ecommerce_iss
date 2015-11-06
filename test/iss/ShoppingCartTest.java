@@ -16,29 +16,28 @@ public class ShoppingCartTest extends TestCase{
 		suite.addTestSuite(ShoppingCartTest.class);
 		return suite;
 	}
+
+	Product apple = new Product("apple", "1001.1", 2);
+	Product orange = new Product("orange", "1001.2", (double) 2);
 	
 	public void testBuyOneItem() {
-		OrderItem item = createOrderItem("apple","1001.1", 2, 1);
-		cart.add(item);	
+		cart.add(new OrderItem(apple, 1));	
 		assertEquals(2, cart.total(), 0.01);
 	}
 
 	public void testBuyTwoItemsOfSameProduct() {
-		OrderItem item =  createOrderItem("apple","1001.1", 2, 2);
-		cart.add(item);
+		cart.add(new OrderItem(apple, 2));
 		assertEquals(3.4, cart.total(), 0.01);
 	}
 
-	public void testBuyTwoItemsOfSameProductX() {
-		OrderItem item = createOrderItem("apple","1001.1", 2, 3);
-		cart.add(item);
+	public void testBuyOddsNumberOfItemsOfSameProduct() {
+		cart.add(new OrderItem(apple, 3));
 		assertEquals(5.4, cart.total(), 0.01);
 	}
 	
-	private OrderItem createOrderItem(String name, String sku, double price, int quantity ) {
-		Product product = new Product(name, sku, price);
-		OrderItem item = new OrderItem(product, quantity);
-		return item;
+	public void testBuyTwoDifferentProducts() {
+		cart.add(new OrderItem(apple, 2));
+		cart.add(new OrderItem(orange, 2));
+		assertEquals(6.8, cart.total(), 0.01);
 	}
-
 }
